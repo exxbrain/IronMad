@@ -1,9 +1,8 @@
 package com.ironmadness.repos;
 
 import com.ironmadness.domain.Channel;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface User_Channel extends JpaRepository<Channel, Long> {
+public interface User_Channel extends CrudRepository<Channel, Long> {
 
-    Channel findByNameChannel(String nameChannel);
 }

@@ -3,13 +3,13 @@
 <#if known>
     <#assign
         user = Session.SPRING_SECURITY_CONTEXT.authentication.principal
-        nameChannel = user.getUsername()
+        name = user.getUsername()
         isAdmin = user.isAdmin()
         >
     <#else>
 
     <#assign
-        nameChannel = "Гость"
+        name = "Гость"
         isAdmin = false
     >
 </#if>

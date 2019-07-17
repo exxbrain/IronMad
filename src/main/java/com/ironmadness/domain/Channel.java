@@ -15,6 +15,16 @@ public class Channel {
     @JoinColumn(name = "user_id")
     private User author;
 
+    public Channel() {
+    }
+
+    public Channel(String nameChannel, String text, String channel_avatar, User author) {
+        this.nameChannel = nameChannel;
+        this.text = text;
+        this.channel_avatar = channel_avatar;
+        this.author = author;
+    }
+
     public Long getId() {
         return id;
     }
