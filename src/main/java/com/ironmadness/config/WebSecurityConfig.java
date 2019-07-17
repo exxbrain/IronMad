@@ -29,13 +29,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-
+        http.authorizeRequests()
+                    .antMatchers("/", "/static/**", "/registration", "/login").permitAll()
+                    .anyRequest().authenticated()
+                .and()
+                    .formLogin()
+                    .loginPage("/login")
+                    .permitAll()
+                .and()
+                    .logout()
+                    .permitAll();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(user_service)
-                .passwordEncoder(passwordEncoder);
+        auth.userDetailsService(user_service).passwordEncoder(passwordEncoder);
+
 
     }
 }

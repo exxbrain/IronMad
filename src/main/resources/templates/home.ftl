@@ -1,4 +1,4 @@
 <#import "parts/common.ftl" as a>
 <@a.page>
-    ${name}
+    ${nameChannel}
 </@a.page>
