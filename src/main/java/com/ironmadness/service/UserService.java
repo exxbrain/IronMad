@@ -1,5 +1,6 @@
 package com.ironmadness.service;
 
+import com.ironmadness.domain.Channel;
 import com.ironmadness.domain.Role;
 import com.ironmadness.domain.User;
 import com.ironmadness.repos.User_Repo;
@@ -10,12 +11,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.UUID;
 
 @Service
-public class User_Service implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -67,5 +71,22 @@ public class User_Service implements UserDetailsService {
             user.setPassword(passwordEncoder.encode(password));
         }
         userRepo.save(user);
+    }
+    public void updateChannel(Channel channel, String name, String text, String avatar){
+
+    }
+
+    public String addFile(MultipartFile file, String uploadPath) throws IOException {
+        File uploadDir = new File(uploadPath);
+
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
+
+        String uuidFile = UUID.randomUUID().toString();
+        String resultFile = uuidFile + "." + file.getOriginalFilename();
+
+        file.transferTo(new File(uploadPath + "/" + resultFile));
+        return resultFile;
     }
 }

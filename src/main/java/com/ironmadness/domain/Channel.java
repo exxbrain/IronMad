@@ -1,28 +1,26 @@
 package com.ironmadness.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Channel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nameChannel;
+    @NotBlank(message = "Поле имени не может быть пустым")
+    private String name;
+    @NotBlank(message = "Поле описания не может быть пустым")
     private String text;
-    private String channel_avatar;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User author;
+    private String avatar;
 
     public Channel() {
     }
 
-    public Channel(String nameChannel, String text, String channel_avatar, User author) {
-        this.nameChannel = nameChannel;
+    public Channel(String name, String text) {
+        this.name = name;
         this.text = text;
-        this.channel_avatar = channel_avatar;
-        this.author = author;
     }
 
     public Long getId() {
@@ -33,12 +31,12 @@ public class Channel {
         this.id = id;
     }
 
-    public String getNameChannel() {
-        return nameChannel;
+    public String getName() {
+        return name;
     }
 
-    public void setNameChannel(String nameChannel) {
-        this.nameChannel = nameChannel;
+    public void setName(String nameChannel) {
+        this.name = nameChannel;
     }
 
     public String getText() {
@@ -49,19 +47,11 @@ public class Channel {
         this.text = text;
     }
 
-    public User getAuthor() {
-        return author;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
-
-    public String getChannel_avatar() {
-        return channel_avatar;
-    }
-
-    public void setChannel_avatar(String channel_avatar) {
-        this.channel_avatar = channel_avatar;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

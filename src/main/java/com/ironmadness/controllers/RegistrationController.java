@@ -1,7 +1,7 @@
 package com.ironmadness.controllers;
 
 import com.ironmadness.domain.User;
-import com.ironmadness.service.User_Service;
+import com.ironmadness.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class RegistrationController {
 
     @Autowired
-    private User_Service user_service;
+    private UserService user_service;
 
     @GetMapping("/registration")
     public String registration(){
@@ -49,7 +49,7 @@ public class RegistrationController {
             model.addAttribute("usernameError", "User exits!");
             return "registration";
         }
-        return "redirect:/lorin";
+        return "redirect:/login";
     }
 
 

@@ -32,6 +32,17 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    private Channel channelUser;
+
+    public Channel getChannelUser() {
+        return channelUser;
+    }
+
+    public void setChannelUser(Channel channelUser) {
+        this.channelUser = channelUser;
+    }
+
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
     }

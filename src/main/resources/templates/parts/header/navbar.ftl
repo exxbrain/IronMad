@@ -35,10 +35,11 @@
                 </#if>
                 <#if user??>
                     <a class="dropdown-item" href="/user/profile">Профиль</a>
+                    <a class="dropdown-item" href="/user/channeledit">Совой канал</a>
                 </#if>
                 <#if isAdmin>
                     <li class="nav-item">
-                        <a class="dropdown-item" href="">Управление пользователями</a>
+                        <a class="dropdown-item" href="/user">Управление пользователями</a>
                     </li>
                 </#if>
                 <#if user??>

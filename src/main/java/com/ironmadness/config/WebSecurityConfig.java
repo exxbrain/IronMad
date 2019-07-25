@@ -1,6 +1,6 @@
 package com.ironmadness.config;
 
-import com.ironmadness.service.User_Service;
+import com.ironmadness.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private User_Service user_service;
+    private UserService user_service;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
