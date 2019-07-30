@@ -46,6 +46,9 @@ public class User implements UserDetails {
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
     }
+    public boolean isChannalUser() {
+        return roles.contains(Role.USER_CHANEL);
+    }
 
     public Long getId() {
         return id;

@@ -43,11 +43,11 @@ public class RegistrationController {
             Map<String, String> errors = ErrorsController.getStringStringMap(bindingResult);
 
             model.mergeAttributes(errors);
-           return "registration";
+           return "/registration";
         }
         if(!user_service.addUser(user)){
-            model.addAttribute("usernameError", "User exits!");
-            return "registration";
+            model.addAttribute("usernameError", "Такой юзер уже существует");
+            return "/registration";
         }
         return "redirect:/login";
     }

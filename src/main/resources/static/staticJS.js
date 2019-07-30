@@ -12,8 +12,8 @@ function as() {
     }
 }
 
+var a = !null;
 $("#btn_movi").on("click", function () {
-
 
     if (num_movi == false) {
         num_movi = true;
@@ -21,6 +21,13 @@ $("#btn_movi").on("click", function () {
         num_movi = false;
     }
     $("#btn_movi").text(as());
+
+    if(a){
+       $("#movi").append(a);
+       a = null;
+    }else {
+        a = $("#iframe_player").detach();
+    }
 
 });
 

@@ -8,6 +8,8 @@ import com.ironmadness.repos.User_Repo;
 import com.ironmadness.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,7 +75,7 @@ public class UserController {
 
         return "redirect:/user/profile";
     }
-
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER_CHANEL')")
     @GetMapping("/channeledit")
     public String channelUser(@AuthenticationPrincipal User user,
                               Model model) {
@@ -82,6 +84,7 @@ public class UserController {
         return "channeledit";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER_CHANEL')")
     @PostMapping("channeledit")
     public String channeledit(
             @AuthenticationPrincipal User user,
@@ -116,12 +119,14 @@ public class UserController {
         return "redirect:/user/channeledit";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public String userList(Model model){
         model.addAttribute("users", userRepo.findAll());
         return "userlist";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model){
         model.addAttribute("user", user);
@@ -129,6 +134,7 @@ public class UserController {
         return "useredit";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public String userSave(
             @RequestParam String username,
