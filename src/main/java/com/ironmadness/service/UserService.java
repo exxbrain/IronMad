@@ -5,6 +5,7 @@ import com.ironmadness.domain.Role;
 import com.ironmadness.domain.User;
 import com.ironmadness.repos.User_Repo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,6 +27,12 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private User_Repo userRepo;
+
+    @Autowired
+    private MailSendere mailSender;
+
+    @Value("${active.mail}")
+    private String activeMail;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -50,6 +57,18 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepo.save(user);
+
+        if(!StringUtils.isEmpty(user.getEmail())){
+            String message = String.format(
+                    "Здравствуйте, %s \n" +
+                            "пожалуйста пройдите по ссылке для авторизации: " +
+                            activeMail + "/activate/%s",
+                    user.getUsername(),
+                    user.getActivate()
+            );
+            mailSender.send(user.getEmail(), "Активация кода", message);
+        }
+
         return true;
     }
 
@@ -88,5 +107,19 @@ public class UserService implements UserDetailsService {
 
         file.transferTo(new File(uploadPath + "/" + resultFile));
         return resultFile;
+    }
+
+    public boolean activateUser(String code) {
+        User user = userRepo.findByActivate(code);
+
+        if(user == null){
+            return false;
+        }
+
+        user.setActivate(null);
+
+        userRepo.save(user);
+
+        return true;
     }
 }

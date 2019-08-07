@@ -3,12 +3,11 @@ package com.ironmadness.controllers;
 import com.ironmadness.domain.Channel;
 import com.ironmadness.domain.Role;
 import com.ironmadness.domain.User;
-import com.ironmadness.repos.User_Channel;
+import com.ironmadness.repos.UserChannel;
 import com.ironmadness.repos.User_Repo;
 import com.ironmadness.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -19,19 +18,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private User_Channel userChannel;
+    private UserChannel userChannel;
 
     @Autowired
     private User_Repo userRepo;

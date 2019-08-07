@@ -1,8 +1,6 @@
 package com.ironmadness.controllers;
 
-import com.ironmadness.domain.Channel;
-import com.ironmadness.repos.User_Channel;
-import com.ironmadness.repos.User_Repo;
+import com.ironmadness.repos.UserChannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,19 +15,12 @@ public class MainController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private User_Channel userChannel;
+    private UserChannel userChannel;
 
     @GetMapping("/")
     public String home(@RequestParam(name = "name", required = false, defaultValue = "Home") String name,
                        Model model){
         model.addAttribute("name", name);
         return "home";
-    }
-
-    @GetMapping("/channel")
-    public String channel (Model model){
-        model.addAttribute("channels", userChannel.findAll());
-
-        return "channel";
     }
 }
