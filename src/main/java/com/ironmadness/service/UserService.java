@@ -31,7 +31,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     private MailSendere mailSender;
 
-    @Value("${active.mail}")
+    @Value("${hostname}")
     private String activeMail;
 
     @Override
@@ -61,9 +61,9 @@ public class UserService implements UserDetailsService {
         if(!StringUtils.isEmpty(user.getEmail())){
             String message = String.format(
                     "Здравствуйте, %s \n" +
-                            "пожалуйста пройдите по ссылке для авторизации: " +
-                            activeMail + "/activate/%s",
+                            "пожалуйста пройдите по ссылке для авторизации: http://%s/activate/%s",
                     user.getUsername(),
+                    activeMail,
                     user.getActivate()
             );
             mailSender.send(user.getEmail(), "Активация кода", message);

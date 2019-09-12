@@ -1,0 +1,17 @@
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/controllers/ErrorsController.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/controllers/RegistrationController.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/domain/Role.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/config/MailConfig.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/domain/User.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/controllers/UserController.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/service/UserService.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/Application.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/controllers/MainController.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/repos/User_Repo.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/service/MailSendere.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/repos/UserChannel.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/controllers/ChannelController.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/config/WebSecurityConfig.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/domain/Channel.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/config/MvcConfig.java
+/home/grisha/project_Java/IronMadness/src/main/java/com/ironmadness/config/EncriptionConfig.java

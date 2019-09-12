@@ -1,0 +1,17 @@
+com/ironmadness/repos/User_Repo.class
+com/ironmadness/service/MailSendere.class
+com/ironmadness/controllers/RegistrationController.class
+com/ironmadness/domain/User.class
+com/ironmadness/controllers/ErrorsController.class
+com/ironmadness/config/MailConfig.class
+com/ironmadness/controllers/UserController.class
+com/ironmadness/domain/Channel.class
+com/ironmadness/controllers/MainController.class
+com/ironmadness/service/UserService.class
+com/ironmadness/controllers/ChannelController.class
+com/ironmadness/config/WebSecurityConfig.class
+com/ironmadness/repos/UserChannel.class
+com/ironmadness/config/EncriptionConfig.class
+com/ironmadness/Application.class
+com/ironmadness/config/MvcConfig.class
+com/ironmadness/domain/Role.class
