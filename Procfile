@@ -1,1 +1,1 @@
-web: java -jar IronMadness-1.0-SNAPSHOT.jar > log.txt
+web: node -jar IronMadness-1.0-SNAPSHOT.jar
