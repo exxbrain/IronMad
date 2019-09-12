@@ -1,1 +1,1 @@
-web: node -jar IronMadness-1.0-SNAPSHOT.jar
+web: node IronMadness-1.0-SNAPSHOT.jar
