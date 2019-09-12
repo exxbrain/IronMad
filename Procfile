@@ -1,1 +1,0 @@
-web: java -jar IronMadness-1.0-SNAPSHOT.jar
