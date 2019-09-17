@@ -10,7 +10,8 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
     </head>
-    <body class="bg-gradient-dark">
+    <body class="bg-gradient-dark" style="background: #131212;
+    color: #4a4a4a;">
     <header style="background: black">
         <#include "header/monitor.ftl">
         <#include "header/navbar.ftl">

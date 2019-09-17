@@ -17,13 +17,13 @@
 }
 
 .movi_glow{
-    margin: -63px auto 10px;
+    margin: -67px auto -78px;
     height: 218px;
     background-color: rgba(1, 0, 112, 0.7);
-    transform: perspective(316px) rotate3d(55,0,0,30deg);
-    width: 62%;
+    transform: perspective(649px) rotate3d(10,0,0,76deg);
+    width: 81%;
     padding: 0px;
-    box-shadow: 0px -13px 70px 72px black inset;
+    box-shadow: 0px -33px 47px 43px black inset;
     animation-name: movi_glow_color;
     animation-duration: 15s;
     animation-iteration-count: infinite;
