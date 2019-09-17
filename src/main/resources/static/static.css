@@ -1,6 +1,5 @@
 .movi{
     margin-top: 25px;
-    margin-bottom: 30px;
     overflow: hidden;
     height: 0;
     padding-bottom: 50.25%;
@@ -17,6 +16,42 @@
     background: rgb(42, 42, 42);
 }
 
+.movi_glow{
+    margin: -74px auto -26px;
+    height: 218px;
+    background-color: rgba(1, 0, 112, 0.7);
+    transform: perspective(316px) rotate3d(55,0,0,30deg);
+    width: 62%;
+    padding: 0px;
+    box-shadow: 0px -33px 47px 43px black inset;
+    animation-name: movi_glow_color;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes movi_glow_color {
+    10%{
+        background-color: rgba(56, 17, 161, 0.41);
+    }
+    40%{
+        background-color: rgba(75, 74, 61, 0.21);
+    }
+    50%{
+        background-color: rgba(225, 219, 0, 0.24);
+    }
+    60%{
+        background-color: rgba(225, 0, 25, 0.23);
+    }
+    70%{
+        background-color: rgba(111, 0, 19, 0.3);
+    }
+    80%{
+        background-color: rgba(34, 0, 151, 0.28);
+    }
+    100%{
+        background-color: rgba(45, 48, 46, 0.24);
+    }
+}
 .movi iframe{
     position: absolute;
     top: 0;
@@ -28,13 +63,6 @@
     10%{
         box-shadow: 0px 0px 20px 0px #3811a1;
         border: inset 1px #3811a1;
-    }
-    20%{
-        box-shadow: 0px 0px 20px 0px #239aa1;
-        border: inset 1px #239aa1;
-    }
-    30%{box-shadow: 0px 0px 30px 0px #09a10e;
-        border: inset 1px #09a10e;
     }
     40%{box-shadow: 0px 0px 20px 0px #4b4a3d;
         border: inset 1px #4b4a3d;
@@ -50,9 +78,6 @@
     }
     80%{box-shadow: 0px 0px 20px 0px #900097;
         border: inset 1px #900097;
-    }
-    90%{box-shadow: 0px 0px 10px 0px #929297;
-        border: inset 1px #929297;
     }
     100%{box-shadow: 0px 0px 20px 0px #2d302e;
         border: inset 1px #2d302e;

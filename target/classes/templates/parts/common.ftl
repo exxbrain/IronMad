@@ -11,7 +11,7 @@
               crossorigin="anonymous">
     </head>
     <body class="bg-gradient-dark">
-    <header>
+    <header style="background: black">
         <#include "header/monitor.ftl">
         <#include "header/navbar.ftl">
     </header>
