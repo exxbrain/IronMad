@@ -61,8 +61,10 @@ public class RegistrationController {
 
         if(isActivate){
             model.addAttribute("message", "Вы успешно авторизовались");
+            model.addAttribute("active", true);
         } else{
             model.addAttribute("message", "ваш активационный код не действителен");
+            model.addAttribute("active", false);
         }
         return "login";
     }

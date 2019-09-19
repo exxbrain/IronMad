@@ -1,6 +1,6 @@
 
 <a id="btn_movi" class=" btn btn-primary btn-style" data-toggle="collapse" href="#collapseExample"
-   role="button" aria-expanded="false" aria-controls="collapseExample" style="border-radius: 0px; border: none ; background: #001f31;">
+   role="button" aria-expanded="false" aria-controls="collapseExample" style="border-radius: 0px; border: none; background: #001f31;">
     Показать видеоплеер
 </a>
 <div class="collapse" id="collapseExample">

@@ -113,6 +113,26 @@
         border: inset 1px #2d302e;
     }
 }
+
+.log-reg-style{
+    padding: 11px;
+    box-shadow: inset 4px 4px 9px -3px black;
+    background-color: #6b747c;
+    color: #363a3e;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    border: 1px solid rgb(40, 12, 152);
+    border-radius: .25rem;
+}
+.input-style{
+    border: 1px solid #484a58 !important;
+    box-shadow: inset 0px 0px 8px -1px black
+}
 .imgs{
     margin-left: 50%;
     margin-right: 50%;
