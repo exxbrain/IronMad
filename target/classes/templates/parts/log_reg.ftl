@@ -1,4 +1,4 @@
-<#macro login path isRegisterForm>
+<#macro login path isRegisterForm vkcode>
     <div class="log-reg-style" style="">
     <form action="${path}" method="post">
         <div class="form-group row">
@@ -65,6 +65,7 @@
         <#if !isRegisterForm><a href="/registration">Новый узер</a></#if>
         <button class="btn btn-primary" type="submit"><#if isRegisterForm>Создать<#else>Войти</#if></button>
     </form>
+        <#if !isRegisterForm><a class="vkapi" href="${vkcode}">VK</a></#if>
     </div>
 </#macro>
 

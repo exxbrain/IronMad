@@ -133,6 +133,28 @@
     border: 1px solid #484a58 !important;
     box-shadow: inset 0px 0px 8px -1px black
 }
+
+.vkapi{
+    height: 37px;
+    width: 37px;
+    text-align: center;
+    background: #0071b3;
+    color: #ffffff;
+    padding: 7px;
+    border-radius: 14px;
+    box-shadow: inset 2px 5px 18px -4px black, 2px 2px 4px 0px black;
+}
+.vkapi:hover{
+    height: 37px;
+    width: 37px;
+    text-align: center;
+    background: #0071b3;
+    color: #ffffff;
+    padding: 7px;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: inset 1px 1px 2px 1px #2b2b2b, 0px 3px 6px 1px #101117;
+}
 .imgs{
     margin-left: 50%;
     margin-right: 50%;

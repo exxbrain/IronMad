@@ -12,5 +12,5 @@
             ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
         </div>
     </#if>
-<@l.login "/login" false />
+<@l.login "/login" false vkcode/>
 </@a.page>
