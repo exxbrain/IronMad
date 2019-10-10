@@ -1,5 +1,5 @@
 <#macro login path isRegisterForm vkcode>
-    <div class="log-reg-style" style="">
+    <div class="log-reg log-reg-style" style="">
     <form action="${path}" method="post">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Логин:</label>

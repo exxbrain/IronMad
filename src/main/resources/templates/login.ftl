@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as a>
 <#import "parts/log_reg.ftl" as l>
-
+<#import "parts/hidden_window.ftl" as h>
 <@a.page>
     <#if message??>
     <div class="alert ${(active)?string('alert-success', 'alert-warning')}" role="alert">
@@ -12,5 +12,5 @@
             ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
         </div>
     </#if>
-<@l.login "/login" false vkcode/>
+<@l.login "/login" false code/>
 </@a.page>

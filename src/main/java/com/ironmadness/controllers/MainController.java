@@ -1,6 +1,6 @@
 package com.ironmadness.controllers;
 
-import com.ironmadness.repos.UserChannel;
+import com.ironmadness.repos.UserChannelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ public class MainController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserChannel userChannel;
+    private UserChannelRepository userChannel;
 
     @GetMapping("/")
     public String home(@RequestParam(name = "name", required = false, defaultValue = "Home") String name,

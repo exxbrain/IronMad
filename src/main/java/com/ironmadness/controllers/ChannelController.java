@@ -1,6 +1,6 @@
 package com.ironmadness.controllers;
 
-import com.ironmadness.repos.UserChannel;
+import com.ironmadness.repos.UserChannelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/channels")
 public class ChannelController {
 
-    private final UserChannel userChannel;
+    private final UserChannelRepository userChannel;
 
     @Autowired
-    public ChannelController(UserChannel userChannel) {
+    public ChannelController(UserChannelRepository userChannel) {
         this.userChannel = userChannel;
     }
 

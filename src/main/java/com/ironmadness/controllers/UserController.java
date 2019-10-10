@@ -3,7 +3,7 @@ package com.ironmadness.controllers;
 import com.ironmadness.domain.Channel;
 import com.ironmadness.domain.Role;
 import com.ironmadness.domain.User;
-import com.ironmadness.repos.UserChannel;
+import com.ironmadness.repos.UserChannelRepository;
 import com.ironmadness.repos.User_Repo;
 import com.ironmadness.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserChannel userChannel;
+    private UserChannelRepository userChannelRepository;
 
     @Autowired
     private User_Repo userRepo;
@@ -111,7 +111,7 @@ public class UserController {
             }
             user.setChannelUser(channel);
         }
-                userChannel.save(channel);
+                userChannelRepository.save(channel);
                 userRepo.save(user);
         return "redirect:/user/channeledit";
     }

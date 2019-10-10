@@ -6,7 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,6 +36,19 @@ public class User implements UserDetails {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Channel channelUser;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Api> api = new ArrayList<Api>();
+
+
+
+    public List<Api> getApi() {
+        return api;
+    }
+
+    public void setApi(List<Api> api) {
+        this.api = api;
+    }
 
     public Channel getChannelUser() {
         return channelUser;
