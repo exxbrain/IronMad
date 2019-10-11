@@ -23,7 +23,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,8 +38,6 @@ public class VkService {
     private String redirectUrl;
     @Value("${CLIENT_SECRET}")
     private String clientSecret;
-
-    private String pass;
 
     @Autowired
     private ApiRepository apiRepository;
@@ -50,11 +51,16 @@ public class VkService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private HttpServletRequest httpSession;
+
     public String appCode(){
         String vkCode = String.format("https://oauth.vk.com/authorize?client_id=%s&display=page&redirect_uri=%s&scope=email&response_type=code",
                 app_id, redirectUrl);
         return vkCode;
     }
+
+    @SessionScope
     public void accessToken(String code) throws Exception {
 
         TransportClient transportClient = HttpTransportClient.getInstance();
@@ -86,9 +92,9 @@ public class VkService {
         if(apiRepository.findByUserId(idApi).getUser() == null){
             userVk = "false";
         }else{
-            userVk = "true";
+            userVk = "completed";
         }
 
-        ApiServlet apiServlet = new ApiServlet(userVk);
+        httpSession.getSession().setAttribute("apiname", userVk);
     }
 }

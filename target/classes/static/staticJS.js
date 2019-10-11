@@ -40,8 +40,7 @@ function visibleWindow() {
         data: userApi,
         crossDomain: true
     }).done(function (data) {
-        userApi.api_user = data;
-        if(userApi.api_user == "false") {
+        if(data == "false") {
             $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
         }
     }).fail(function (data) {

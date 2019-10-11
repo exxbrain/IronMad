@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "api")
-public class Api {
+public class Api{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
