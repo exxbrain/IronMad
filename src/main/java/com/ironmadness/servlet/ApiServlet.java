@@ -25,21 +25,23 @@ public class ApiServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //параметер получающий значение в поле при вводе на клавиатуре
         String nameApi = req.getParameter("name");
 
+        //название атрибута в сессии
         String attributeApi = "apiname";
-
-        HttpSession httpSession = req.getSession();
 
         String apiSessionWindow = (String) req.getSession().getAttribute(attributeApi);
 
         if(nameApi == null) {
+            //показывать окно создание поьзователя или нет
             if(apiSessionWindow == "false") {
                 resp.setContentType("text/plan");
                 resp.setCharacterEncoding("UTF-8");
                 resp.getWriter().write(apiSessionWindow);
             }
         }else{
+            //выдает ошибку если наброное имя уже есть
             if(userRepository.findByUsername(nameApi) != null){
                 String greeting = "true";
                 resp.setContentType("text/plan");

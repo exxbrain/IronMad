@@ -1,5 +1,6 @@
 package com.ironmadness.service;
 
+import com.ironmadness.config.WebSecurityConfig;
 import com.ironmadness.domain.Role;
 import com.ironmadness.domain.User;
 import com.ironmadness.domain.Api;
@@ -18,10 +19,13 @@ import com.vk.api.sdk.objects.users.UserXtrCounters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -54,6 +58,10 @@ public class VkService {
     @Autowired
     private HttpServletRequest httpSession;
 
+    @Autowired
+    private WebSecurityConfig ws;
+
+
     public String appCode(){
         String vkCode = String.format("https://oauth.vk.com/authorize?client_id=%s&display=page&redirect_uri=%s&scope=email&response_type=code",
                 app_id, redirectUrl);
@@ -61,7 +69,7 @@ public class VkService {
     }
 
     @SessionScope
-    public void accessToken(String code) throws Exception {
+    public void accessToken(String code, HttpServletRequest httpServletRequest) throws Exception {
 
         TransportClient transportClient = HttpTransportClient.getInstance();
         VkApiClient vk = new VkApiClient(transportClient);
@@ -73,6 +81,7 @@ public class VkService {
 
         //получаем данные с вк которые запишем в бд
         String tokenApi = actor.getAccessToken();
+        //id пользователя vk
         Integer idApi = actor.getId();
 
         List<UserXtrCounters> as = vk.users().get(actor).execute();
@@ -87,14 +96,45 @@ public class VkService {
             apiRepository.save(api);
         }
 
-        String userVk = "true";
 
+        //запишем некоторые параметры в сессию
+        httpSession.getSession().setAttribute("id_vk", idApi);
+        //мыло пользователя тоже запишем в параметр сессии
+        httpSession.getSession().setAttribute("mail_api", authResponse.getEmail());
+
+        //с помощью параметра в сессии будет показывать окно создание пользователя если он не создан
         if(apiRepository.findByUserId(idApi).getUser() == null){
-            userVk = "false";
-        }else{
-            userVk = "completed";
-        }
+            httpSession.getSession().setAttribute("apiname", "false");
+        }else {
+            Api api = apiRepository.findByUserId(idApi);
 
-        httpSession.getSession().setAttribute("apiname", userVk);
+            //так как авторизация происходит с помощью созданого пользователя, нужено вставлять пароль который хеширован
+            // я решил делать каждый раз при входе новый пароль
+            RandomPassword randomPassword = new RandomPassword();
+            String newPass = randomPassword.generateRandomPassword(8);
+            api.getUser().setPassword(passwordEncoder.encode(newPass));
+            apiRepository.save(api);
+
+            //аутафицируем пользователя
+            Authentication authentication = new UsernamePasswordAuthenticationToken(api.getUser().getUsername(), newPass);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }
+    }
+
+    public void addUserApi(String apiName) throws Exception {
+        Api api = apiRepository.findByUserId((Integer) httpSession.getSession().getAttribute("id_vk"));
+        String mail = (String) httpSession.getSession().getAttribute("mail_api");
+        RandomPassword randomPassword = new RandomPassword();
+        User user = new User();
+        user.setUsername(apiName);
+        user.setEmail(mail);
+        user.setActive(true);
+        String password = randomPassword.generateRandomPassword(8);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setRoles(Collections.singleton(Role.USER));
+        userRepository.save(user);
+        api.setUser(user);
+        apiRepository.save(api);
+        httpSession.getSession().setAttribute("apiname", "true");
     }
 }

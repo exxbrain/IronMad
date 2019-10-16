@@ -2,11 +2,11 @@
     <div class="popup log-reg-style">
         <div class="close_window">x</div>
         <p>Придумайте имя</p>
-        <form action="/api" method="post">
+        <form action="/apiuser" method="post">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Логин: </label>
                     <div class="col-sm-10">
-                        <input type="text" name="username" id="name_api"
+                        <input type="text" name="apiname" id="name_api"
                                class="input-style form-control"/>
                             <div id="error_name_api" class="invalid-feedback error_window_api" style="opacity: 0; visibility: hidden">
                                 Такой логин уже есть, придумай другой

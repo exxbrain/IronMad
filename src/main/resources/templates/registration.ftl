@@ -3,5 +3,5 @@
 <@a.page>
     <div class="md-1">Add new user</div>
     ${message?ifExists}
-    <@r.login "/registration" true />
+    <@r.login "/registration" true code?ifExists/>
 </@a.page>

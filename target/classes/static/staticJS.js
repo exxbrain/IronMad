@@ -32,7 +32,7 @@ $("#btn_movi").on("click", function () {
 
 //переменная которая будет руководить, показывать окно или нет
 var userApi = {"api_user" : "true"};
-//запрос на проверку есть ли аккаунт у нового api клиента, если нет то отображаем окно для создание нового аккаунта
+//запрос на проверку есть ли аккаунт у нового api клиента, если нет то отображаем окно для создание нового пользователя
 function visibleWindow() {
     $.ajax({
         type: "GET",
@@ -42,6 +42,8 @@ function visibleWindow() {
     }).done(function (data) {
         if(data == "false") {
             $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
+        }else{
+            $(".popup, .overlay").css({'opacity': 0, 'visibility': 'hidden'});
         }
     }).fail(function (data) {
         console.log("Ошибка")
@@ -71,7 +73,7 @@ function nameUser(name){
 }
 
 
-//закрывает окно создане пользователя
+//закрывает окно создане пользователя api
 $(".popup .close_window, .overlay").click(function () {
     $(".popup, .overlay").css({'opacity': 0, 'visibility': 'hidden'});
 });
@@ -81,6 +83,7 @@ $("#name_api").keyup(function () {
     var name_api =$("#name_api").val();
     nameUser(name_api);
 });
+
 $(document).ready(function () {
     visibleWindow();
 });
