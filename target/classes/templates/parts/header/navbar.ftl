@@ -12,7 +12,7 @@
                 <a class="nav-link" href="/">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/channel">Каналы</a>
+                <a class="nav-link" href="/channels">Каналы</a>
             </li>
         </ul>
         <div class="dropdown">

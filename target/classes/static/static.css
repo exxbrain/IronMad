@@ -394,5 +394,10 @@
     background: #8f9be0;
 }
 
-
-
+.img_square{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 300px
+}
